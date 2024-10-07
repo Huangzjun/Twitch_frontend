@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# Twitch Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Url：https://3zkx3mvm3q.us-west-2.awsapprunner.com/
 
-## Available Scripts
+Backend：
 
-In the project directory, you can run:
+This project is a frontend application for browsing Twitch streams, videos, and clips. It is built using React and Ant Design.
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Features](#features)
+- [Technical Frameworks](#technical-frameworks)
+- [Architecture](#architecture)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [API Endpoints](#api-endpoints)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **Streams**: View a list of live streams. Each stream includes a link to the broadcaster's Twitch page.
+- **Videos**: Browse through a collection of videos. Each video includes a link to its Twitch page.
+- **Clips**: Explore various clips. Each clip includes a link to its Twitch page.
+- **Favorites**: Add or remove streams, videos, and clips from your favorites list.
+- **Recommendations**: Get personalized recommendations based on your preferences.
+- **Search**: Search for games by name or ID.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technical Frameworks
 
-### `npm run build`
+- **React**: A JavaScript library for building user interfaces.
+- **Ant Design**: A React UI library that provides a set of high-quality components.
+- **Fetch API**: Used for making HTTP requests to the backend server.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Architecture
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The application follows a component-based architecture using React. The main components are:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Home**: The main component that renders the tabs for streams, videos, and clips.
+- **CardGrid**: A component that renders a grid of cards for each category.
+- **CardTitle**: A component that renders the title of each card, including favorite functionality and links.
 
-### `npm run eject`
+## Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone the repository:
+    ```sh
+    git clone 
+    ```
+2. Navigate to the project directory:
+    ```sh
+    cd twitchfe
+    ```
+3. Install the dependencies:
+    ```sh
+    npm install
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Start the development server:
+    ```sh
+    npm start
+    ```
+2. Open your browser and navigate to `http://localhost:3000`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Configuration
 
-## Learn More
+- **Proxy**: The project uses a proxy setting in `package.json` to forward API requests to the backend server running on `http://localhost:8080`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## API Endpoints
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Top Games**: Fetch the top games from the backend.
+    ```javascript
+    import { getTopGames } from './utils';
+    getTopGames().then(games => console.log(games));
+    ```
+- **Game Details**: Fetch details of a specific game by name.
+    ```javascript
+    import { searchGameByName } from './utils';
+    searchGameByName('game_name').then(game => console.log(game));
+    ```
+- **Favorite Items**: Add, delete, and fetch favorite items.
+    ```javascript
+    import { addFavoriteItem, deleteFavoriteItem, getFavoriteItem } from './utils';
+    addFavoriteItem(item).then(() => console.log('Added to favorites'));
+    deleteFavoriteItem(item).then(() => console.log('Removed from favorites'));
+    getFavoriteItem().then(favs => console.log(favs));
+    ```
+- **Recommendations**: Fetch recommended items based on user preferences.
+    ```javascript
+    import { getRecommendations } from './utils';
+    getRecommendations().then(recs => console.log(recs));
+    ```
+- **Search Game by ID**: Search for a game by its ID.
+    ```javascript
+    import { searchGameById } from './utils';
+    searchGameById('game_id').then(game => console.log(game));
+    ```
+- **Search Game by Name**: Search for a game by its name.
+    ```javascript
+    import { searchGameByName } from './utils';
+    searchGameByName('game_name').then(game => console.log(game));
+    ```
