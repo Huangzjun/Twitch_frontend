@@ -2,7 +2,7 @@
 
 Url：https://3zkx3mvm3q.us-west-2.awsapprunner.com/
 
-Backend：
+Backend：https://github.com/Huangzjun/Twitch_plus
 
 This project is a frontend application for browsing Twitch streams, videos, and clips. It is built using React and Ant Design.
 
